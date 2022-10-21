@@ -10,6 +10,7 @@ app.use(express.json())
 app.use(cors())
 var database
 
+//get API to fetch data from mongodb collection
 app.get('/api/teams',(req, res) => {
     
     database.collection('csvs').find({}).toArray((err, result) => {
@@ -22,6 +23,8 @@ app.get('/api/teams',(req, res) => {
         res.send(response)
     })
 })
+
+//MongoDb Connection
 app.listen(port, () => {
     mongoClient.connect('mongodb+srv://osamanajmi:Osama123@cluster0.povxa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     {useNewUrlParser: true}, (error, result) => {
